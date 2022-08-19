@@ -85,10 +85,18 @@ def classify_reviews():
     # You will want to use the function classifier.classify, which takes
     # a document formatted for the classifier and returns the classification
     # of that document ("pos" or "neg").  For example:
+    print("Positive accuracy of the classifier is: " + str(accuracy(classifier, pos_test)))
+    print("Negative accuracy of the classifier is: " + str(accuracy(classifier, neg_test)))
     # classifier.classify(format_sentence("I love this movie. It was great!"))
     # will (hopefully!) return "pos"
 
     # TODO: Print the misclassified examples
+    for i in neg_test:
+        if classifier.classify(i[0]) != "neg":
+            print(i)
+    for i in pos_test:
+        if classifier.classify(i[0]) != "pos":
+            print(i)
 
 
 
@@ -118,7 +126,3 @@ tst = "Yeah baby I like it like that You gotta believe me when I tell you I said
 
 #model = train(tst)
 #print(generate(model, "I", 15))
-
-print(split_train_test(["A", "B", "C", "D"], 0.25))
-print(split_train_test(["A", "B", "C", "D"], 0.1))
-print(split_train_test(["A", "B", "C", "D"], 0.6))
